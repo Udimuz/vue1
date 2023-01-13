@@ -38,4 +38,4 @@ app.component('post-component', PostComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.mount('#app');
+app.mount('#app_dima');

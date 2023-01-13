@@ -1,25 +1,42 @@
 <template>
   <div class="text-center bg-success">
-    <div>111111111-444444444444</div>
-    <div>Имя: {{ name }}</div>
+    <div>------- Начало -------</div>
+    <single-post-component></single-post-component>
+    <div>Предок: {{ name }}</div>
+    <button @click="sayHello">Hello</button>-
+    <button @click="sayJay">Jay</button>
   </div>
 </template>
 
 <script>
+import SinglePostComponent from "@/components/SinglePostComponent.vue";
+//import SinglePostComponent from "./SinglePostComponent.vue";
 export default {
   name: "PostComponent",
 
   data() {
     return {
-      name: 'Дима',
-      age: 47,
-      arr: [11, '22', true],
+      name: 'Мать',
+      age: 62,
+      arr: [false, 77, '108'],
       someObj: {
-        personName: 'Damayita'
+        personName: 'Fisya'
       }
     }
   },
 
+  methods: {
+    sayHello() {
+      console.log('Hello')
+    },
+    sayJay() {
+      alert(this.name + ' say: Jay')
+    },
+  },
+
+  components: {
+    SinglePostComponent
+  },
 }
 </script>
 
