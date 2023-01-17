@@ -1,29 +1,32 @@
 <template>
-	<div class="text-center">Строим таблицу
-		<table class="table">
-			<thead>
-			<tr>
-				<th>#</th>
-				<th>Имя</th>
-				<th>Возраст</th>
-				<th>Должность</th>
-			</tr>
-			</thead>
-			<tbody>
-			<tr v-for="person in persons">
-				<th scope="row">{{ person.id }}</th>
-				<td>{{ person.name }}</td>
-				<td>{{ person.age }}</td>
-				<td>{{ person.job }}</td>
-			</tr>
-			</tbody>
-		</table>
+	<div class="text-center p-5">Строим таблицу
+		<CreateComponent></CreateComponent>
+<!--		<table class="table">-->
+<!--			<thead>-->
+<!--			<tr>-->
+<!--				<th>#</th>-->
+<!--				<th>Имя</th>-->
+<!--				<th>Возраст</th>-->
+<!--				<th>Должность</th>-->
+<!--			</tr>-->
+<!--			</thead>-->
+<!--			<tbody>-->
+<!--			<tr v-for="person in persons">-->
+<!--				<th scope="row">{{ person.id }}</th>-->
+<!--				<td>{{ person.name }}</td>-->
+<!--				<td>{{ person.age }}</td>-->
+<!--				<td>{{ person.job }}</td>-->
+<!--			</tr>-->
+<!--			</tbody>-->
+<!--		</table>-->
   </div>
 </template>
 
 <script>
 //import SinglePostComponent from "@/components/SinglePostComponent.vue";
-//import SinglePostComponent from "./SinglePostComponent.vue";
+import SinglePostComponent from "./SinglePostComponent.vue";
+//import CreateComponent from "@/components/CreateComponent.vue";
+import CreateComponent from "./CreateComponent.vue";
 export default {
   name: "PostComponent",
 
@@ -85,29 +88,30 @@ export default {
 	},
 
   methods: {
-		getPosts() {
-			axios.get('/posts')	// В "data" у нас то что пришло с бекенда
-					.then(function(myres) {	// Дальше работаем с данными, которые придут с бекенда, а точнее - из контроллера PersonController
-						console.log(myres.data);
-					})
-		},
-		getPersons() {
-			axios.get('/persons')
-					.then(myres => {	// Внутри скобок у нас уже будет идти работа
-						this.persons = myres.data;
-					})
-					.catch(error => {})
-					.finally( { } )	// В любом случае отработает
-		}
+		// getPosts() {
+		// 	axios.get('/posts')	// В "data" у нас то что пришло с бекенда
+		// 			.then(function(myres) {	// Дальше работаем с данными, которые придут с бекенда, а точнее - из контроллера PersonController
+		// 				console.log(myres.data);
+		// 			})
+		// },
+
+		// getPersons() {
+		// 	axios.get('/persons')
+		// 			.then(myres => {	// Внутри скобок у нас уже будет идти работа
+		// 				this.persons = myres.data;
+		// 			})
+		// 			.catch(error => {})
+		// 			.finally( { } )	// В любом случае отработает
+		// }
   },
 
 	mounted() {
-		this.getPersons()
+		//this.getPersons()
 	},
 
-	// components: {
-  //   SinglePostComponent
-  // },
+	components: {
+		CreateComponent
+  },
 }
 </script>
 
