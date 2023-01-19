@@ -1,6 +1,7 @@
 <template>
-	<div class="text-center p-5">Строим таблицу
+	<div class="p-5"><p><b>Сотрудники</b></p>
 		<CreateComponent></CreateComponent>
+		<IndexComponent></IndexComponent>
 <!--		<table class="table">-->
 <!--			<thead>-->
 <!--			<tr>-->
@@ -23,10 +24,9 @@
 </template>
 
 <script>
-//import SinglePostComponent from "@/components/SinglePostComponent.vue";
-import SinglePostComponent from "./SinglePostComponent.vue";
 //import CreateComponent from "@/components/CreateComponent.vue";
 import CreateComponent from "./CreateComponent.vue";
+import IndexComponent from "./IndexComponent.vue";
 export default {
   name: "PostComponent",
 
@@ -110,7 +110,8 @@ export default {
 	},
 
 	components: {
-		CreateComponent
+		CreateComponent,
+		IndexComponent
   },
 }
 </script>

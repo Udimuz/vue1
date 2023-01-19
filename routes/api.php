@@ -22,12 +22,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Например:	axios.post('/api/people')
 
 Route::group(['namespace'=>'App\Http\Controllers\Person', 'prefix'=>'people'], function(){
+	// Для добавления новых людей:	по адресу /api/people
 	Route::post('/', 'StoreController');
-//	Route::get('/', 'IndexController')->name('post.index');
-//	Route::get('/{post}', 'ShowController')->name('post.show');
-	// Такой вариант сборки (приём) называется "нестед роут"
-	// Для запуска страницы по адресу "/post/10/comments":
-//	Route::group(['namespace'=>'Comment', 'prefix'=>'{post}/comments'], function() {
-//		Route::post('/', 'StoreController')->name('post.comment.store');
-//	});
+	// Для получения списка людей:	по адресу /api/people
+	Route::get('/', 'IndexController');
+	// Для обновления данных:	по адресу /api/people/3
+	Route::patch('/{person}', 'UpdateController');
+	// Для удаления одной записи:	по адресу /api/people/3
+	Route::delete('/{person}', 'DeleteController');
 });
