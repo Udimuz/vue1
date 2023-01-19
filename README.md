@@ -1,8 +1,9 @@
-Изучение.
-## VueJS &nbsp; в &nbsp;  Laravel
+Изучение <b>VueJS</b>
+## в Laravel
 <ul>
     <li>Переменные</li>
     <li>Функции</li>
     <li>Работа c библиотекой Axios</li>
     <li>Асинхронный CRUD</li>
+    <li>Отношения между компонентами</li>
 </ul>
