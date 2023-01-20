@@ -11,8 +11,8 @@
 			</tr>
 			</thead>
 			<tbody>
-			<template v-for="person in people">
-				<ShowComponent :person="person"></ShowComponent>
+			<template v-for="personOwn in people">
+				<ShowComponent :person="personOwn"></ShowComponent>
 				<!--tr :class="isEdit(person.id) ? 'd-none' : ''">
 					<th scope="row">{{ person.id }}</th>
 					<td>{{ person.name }}</td>
@@ -21,7 +21,7 @@
 					<td><a href="#" @click.prevent="changeEditPersonId(person.id, person.name, person.age, person.job)" class="btn btn-success">Изменить</a> &nbsp;
 							<a href="#" @click.prevent="deletePerson(person.id)" class="btn btn-danger">Удалить</a></td>
 				</tr-->
-				<EditComponent :person="person" :ref="`edit_${person.id}`"></EditComponent>
+				<EditComponent :person="personOwn" :ref="`edit_${personOwn.id}`"></EditComponent>
 				<!--tr :class="isEdit(person.id) ? '' : 'd-none'">
 					<th scope="row">{{ person.id }}</th>
 					<td><input type="text" v-model="name" class="form-control"></td>
@@ -67,13 +67,17 @@ export default {
 		isEdit(id) {	// Сравнение "===" сравнивает также типы данных
 			return this.editPersonId === id
 		},
-		updatePerson() {
-			axios.patch(`/api/people/${this.editPersonId}`, {name: this.name, age: this.age, job: this.job})
-					.then(_ => {	// then срабатывает, если обновление в базе прошло успешно
-						this.getPeople()	// Чтобы изменения стали тут же видны, самый простой способ - обновить список вызвав эту функцию
-					})
-			this.editPersonId = null	// Нужно чтобы закрылись поля обновления
+		indexLog() {
+			console.log('Это компонент Index');
+			//alert('Это компонент Index')
 		},
+		// updatePerson() {
+		// 	axios.patch(`/api/people/${this.editPersonId}`, {name: this.name, age: this.age, job: this.job})
+		// 			.then(_ => {	// then срабатывает, если обновление в базе прошло успешно
+		// 				this.getPeople()	// Чтобы изменения стали тут же видны, самый простой способ - обновить список вызвав эту функцию
+		// 			})
+		// 	this.editPersonId = null	// Нужно, чтобы закрылись поля обновления
+		// },
 		// changeEditPersonId(id, name, age, job) {
 		// 	this.editPersonId = id
 		// 	// this.$refs.edit.name = name
@@ -87,16 +91,12 @@ export default {
 		// 	fullName.age = age
 		// 	fullName.job = job
 		// },
-		deletePerson(id) {
-			axios.delete(`/api/people/${id}`)
-					.then(_ => {	// then срабатывает, если обновление в базе прошло успешно
-						this.getPeople()	// Чтобы изменения стали тут же видны, самый простой способ - обновить список вызвав эту функцию
-					})
-		},
-		indexLog() {
-			console.log('Это компонент Index');
-			//alert('Это компонент Index')
-		}
+		// deletePerson(id) {
+		// 	axios.delete(`/api/people/${id}`)
+		// 			.then(_ => {	// then срабатывает, если обновление в базе прошло успешно
+		// 				this.getPeople()	// Чтобы изменения стали тут же видны, самый простой способ - обновить список вызвав эту функцию
+		// 			})
+		// },
 	},
 
 	components: {

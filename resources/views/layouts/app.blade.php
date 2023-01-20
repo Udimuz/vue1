@@ -17,15 +17,20 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <div id="app_dima">
-        <post-component></post-component>
+    <!--div id="app2" style="border:solid 1px green">
+        <Index1></Index1>
+        <hr>
+        <router-link to="/">Home</router-link> | <router-link to="/posts">Сообщения</router-link>
+        <hr>
+        <router-view></router-view>
+    </div-->
+    <div id="app" class="p-4" style="border:solid 1px magenta">
+        <!--router-link to="/">Home</router-link> |
+        <router-link to="/tags">Теги</router-link> |
+        <router-link to="/posts">Сообщения</router-link>
+        <hr>
+        <router-view></router-view-->
+        @yield('content')
     </div>
 </body>
 </html>
-<script>
-	//import PostComponent from "../components/PostComponent.vue";
-	import PostComponent from "@/components/PostComponent.vue";
-	export default {
-		components: {PostComponent}
-	}
-</script>
