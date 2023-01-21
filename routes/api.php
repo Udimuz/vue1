@@ -26,6 +26,8 @@ Route::group(['namespace'=>'App\Http\Controllers\Person', 'prefix'=>'people'], f
 	Route::post('/', 'StoreController');
 	// Для получения списка людей:	по адресу /api/people
 	Route::get('/', 'IndexController');
+	// Для получения данных одного человека:	по адресу /api/people/3
+	Route::get('/{person}', 'ShowController');
 	// Для обновления данных:	по адресу /api/people/3
 	Route::patch('/{person}', 'UpdateController');
 	// Для удаления одной записи:	по адресу /api/people/3

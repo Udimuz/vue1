@@ -24,7 +24,7 @@
         <hr>
         <router-view></router-view>
     </div-->
-    <div id="app" class="p-4" style="border:solid 1px magenta">
+    <div id="my_app" class="p-4" style="border:solid 1px magenta">
         <!--router-link to="/">Home</router-link> |
         <router-link to="/tags">Теги</router-link> |
         <router-link to="/posts">Сообщения</router-link>

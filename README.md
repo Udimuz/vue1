@@ -7,4 +7,5 @@
     <li>Асинхронный CRUD</li>
     <li>Отношения между компонентами</li>
     <li>Vue Router</li>
+    <li>CRUD в SPA</li>
 </ul>
