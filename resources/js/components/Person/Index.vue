@@ -50,7 +50,7 @@ export default {
 			axios.get('/api/people')
 					.then(myres => {
 						//console.log(myres.data);
-						this.people = myres.data
+						this.people = myres.data.data 	// Так как данные теперь обрабатываются через ресурс "PersonResource" нужно к структуре добавлять ещё ".data"
 					})
 		},
 		deletePerson(id) {

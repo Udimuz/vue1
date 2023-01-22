@@ -4,7 +4,7 @@
 		<div class="mb-3"><input type="text" id="name" v-model="name" class="form-control" placeholder="Имя"></div>
 		<div class="mb-3"><input type="number" id="age" v-model="age" class="form-control" placeholder="Возраст"></div>
 		<div class="mb-3"><input type="text" id="job" v-model="job" class="form-control" placeholder="Должность"></div>
-		<div class="mb-3"><input type="button" @click.prevent="store" class="btn btn-primary" value="Добавить"></div>
+		<div class="mb-3"><input :disabled="!isDisabled" type="button" @click.prevent="store" class="btn btn-primary" value="Добавить"></div>
 	</div>
 </template>
 
@@ -32,6 +32,16 @@ export default {
 						//this.name = null; this.age = null; this.job = null;
 						//this.$parent.$refs.index.getPeople()
 					})
+		}
+	},
+
+	computed: {
+		// Иметь ввиду: disabled - обрабатывает данные от противного. В случае получения "false", кнопка будет доступная
+		// disabled спрашивает "Выключить кнопку?"
+		isDisabled() {
+			// Если значение "this.name==null", ничего не заполняли, то оно после преобразования (поверки данных) примет значение "false"
+			// А проверка типа данных в данном случае будет производиться в тегах, какой тип там указали:	type="text"
+			return this.name && this.age && this.job;
 		}
 	}
 

@@ -4,7 +4,7 @@
 		<div class="mb-3"><input type="text" id="name" v-model="name" class="form-control" placeholder="Имя"></div>
 		<div class="mb-3"><input type="number" id="age" v-model="age" class="form-control" placeholder="Возраст"></div>
 		<div class="mb-3"><input type="text" id="job" v-model="job" class="form-control" placeholder="Должность"></div>
-		<div class="mb-3"><input type="button" @click.prevent="updatePerson" class="btn btn-primary" value="Обновить"></div>
+		<div class="mb-3"><input :disabled="!isDisabled" type="button" @click.prevent="updatePerson" class="btn btn-primary" value="Обновить"></div>
 	</div>
 </template>
 
@@ -29,9 +29,11 @@ export default {
 		getOnePerson() {
 			axios.get('/api/people/' + this.$route.params.id)
 					.then(myres => {
-						this.name = myres.data.name
-						this.age = myres.data.age
-						this.job = myres.data.job
+						// this.name = myres.data.name
+						// Так как данные теперь обрабатываются через ресурс "PersonResource" нужно к структуре добавлять ещё ".data"
+						this.name = myres.data.data.name
+						this.age = myres.data.data.age
+						this.job = myres.data.data.job
 					})
 		},
 
@@ -42,6 +44,15 @@ export default {
 						this.$router.push({name: 'person.show', params: {id: this.$route.params.id}})
 					})
 		},
+	},
+
+	computed: {
+		// Иметь ввиду: disabled - обрабатывает данные от противного. В случае получения "false", кнопка будет доступная
+		// disabled спрашивает "Выключить кнопку?"
+		isDisabled() {
+			// Если значение "this.name==null", ничего не заполняли, то оно после преобразования (поверки данных) примет значение "false"
+			return this.name && this.age && this.job;
+		}
 	}
 }
 </script>

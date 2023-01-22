@@ -29,7 +29,9 @@ export default {
 		getOnePerson() {
 			axios.get('/api/people/' + this.$route.params.id)
 					.then(myres => {
-						this.person = myres.data
+						//this.person = myres.data
+						this.person = myres.data.data 	// Так как данные теперь обрабатываются через ресурс "PersonResource" нужно к структуре добавлять ещё ".data"
+						//console.log(this.person);
 					})
 		},
 		deletePerson(id) {

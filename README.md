@@ -8,4 +8,5 @@
     <li>Отношения между компонентами</li>
     <li>Vue Router</li>
     <li>CRUD в SPA</li>
+    <li>Resource и Валидация полей</li>
 </ul>
