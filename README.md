@@ -9,4 +9,5 @@
     <li>Vue Router</li>
     <li>CRUD в SPA</li>
     <li>Resource и Валидация полей</li>
+    <li>VueX</li>
 </ul>

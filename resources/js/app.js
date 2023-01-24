@@ -1,5 +1,8 @@
 import './bootstrap';
-import { createApp } from 'vue';
+// import { createApp, h} from 'vue';
+import { createApp} from 'vue';
+// import store from './store'
+import store from './store/index'
 import * as VueRouter from "vue-router";
 
 import Index from './components/Index.vue';
@@ -23,10 +26,13 @@ const routes = [
 
 const router = VueRouter.createRouter({
 	history: VueRouter.createWebHistory('/'),
-	routes
+	routes,
+	//store
 })
 
-const app = createApp({})
+const app = createApp({
+	// render: ()=>h(Index)
+})
 
 app.use(router)
 
@@ -34,7 +40,11 @@ app.use(router)
 // app.component('post-component', Post1Component);
 
 app.component('index', Index);
+
 // Решил попробовать динамическое подключение, не сработало:
 // app.component('index', function() { return import('@/components/Index.vue') });
 
+app.use(store)
+
+// app.use(store).mount('#my_app');	// app_dima
 app.mount('#my_app');	// app_dima

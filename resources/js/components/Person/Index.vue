@@ -22,7 +22,7 @@
 					<td>{{ personOwn.job }}</td>
 					<td>
 						<router-link :to="{ name: 'person.edit', params: { id: personOwn.id}}" class="btn btn-success">Изменить</router-link>
-						<a @click.prevent="deletePerson(personOwn.id)" href="" class="m-lg-3 btn btn-outline-danger">Удалить</a>
+						<a @click.prevent="$store.dispatch('deletePerson', personOwn.id)" href="" class="m-lg-3 btn btn-outline-danger">Удалить</a>
 					</td>
 				</tr>
 			</template>
@@ -35,33 +35,41 @@
 export default {
 	name: "Index",
 
-	data() {
-		return {
-			people: null,
-		}
-	},
+	// data() {
+	// 	return {
+	// 		people: null,
+	// 	}
+	// },
 
 	mounted() {
-		this.getPeople()
+		//this.getPeople()
+		this.$store.dispatch('getPeople')
 	},
 
 	methods: {
-		getPeople() {
-			axios.get('/api/people')
-					.then(myres => {
-						//console.log(myres.data);
-						this.people = myres.data.data 	// Так как данные теперь обрабатываются через ресурс "PersonResource" нужно к структуре добавлять ещё ".data"
-					})
-		},
-		deletePerson(id) {
-			axios.delete(`/api/people/${id}`)
-					.then(_ => {
-						this.getPeople()	// Чтобы изменения стали тут же видны, самый простой способ - обновить список вызвав эту функцию
-					})
-		},
+		// getPeople() {
+		// 	axios.get('/api/people')
+		// 			.then(myres => {
+		// 				//console.log(myres.data);
+		// 				this.people = myres.data.data 	// Так как данные теперь обрабатываются через ресурс "PersonResource" нужно к структуре добавлять ещё ".data"
+		// 			})
+		// },
+		// deletePerson(id) {
+		// 	axios.delete(`/api/people/${id}`)
+		// 			.then(_ => {
+		// 				this.getPeople()	// Чтобы изменения стали тут же видны, самый простой способ - обновить список вызвав эту функцию
+		// 			})
+		// },
+	},
+
+	computed: {
+		people() {
+			// console.log(this.$store.getters.person);
+			return this.$store.getters.people
+		}
 	}
 
-	}
+}
 </script>
 
 <style scoped>
