@@ -14,6 +14,8 @@ class UpdateController extends Controller
 	{
 		$data = $request->validated();
 		$person->update($data);
-		return $person;
+		//return $person;
+		// Оказалось, здесь возвращать данные не обязательно, там они сейчас не обрабатываются. Сделаем возврат пустого массива:
+		return response([]);
 	}
 }
